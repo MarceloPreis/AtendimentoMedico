@@ -4,7 +4,6 @@ public class Especialidade {
 	private String descricao;
 
 	public Especialidade(String descricao) {
-		super();
 		this.descricao = descricao;
 	}
 

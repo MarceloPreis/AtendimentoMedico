@@ -2,15 +2,16 @@ package atendimentoMedico;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Operacao {
 	private LocalDateTime inicio;
 	private LocalDateTime fim;
 	
-	public Operacao(LocalDateTime inicio, LocalDateTime fim) {
-		super();
-		this.inicio = inicio;
-		this.fim = fim;
+	public Operacao(String inicio, String fim) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		this.inicio = LocalDateTime.parse(inicio, formatter);
+		this.fim = LocalDateTime.parse(fim, formatter);
 	}
 
 	public long tempoTotal() {

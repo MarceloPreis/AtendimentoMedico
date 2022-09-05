@@ -3,7 +3,7 @@ package atendimentoMedico;
 import java.time.LocalDateTime;
 
 public class Atestado extends Operacao{
-	public Atestado(LocalDateTime inicio, LocalDateTime fim) {
+	public Atestado(String inicio, String fim) {
 		super(inicio, fim);
 	}
 
@@ -17,8 +17,19 @@ public class Atestado extends Operacao{
 		this.cid = cid;
 	}
 	
-	public void emitirAtestado(Atendimento atendimento) {
-		System.out.println("Atestado emitido");
+	
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Atestado [cid=");
+		builder.append(cid);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	public String emitirAtestado(Atendimento atendimento, Menu menu) {
+		return menu.emitirRecibo(atendimento);
 	}
 
 }

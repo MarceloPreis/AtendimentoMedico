@@ -16,17 +16,11 @@ public class Medico extends Pessoa {
 		return especialidades;
 	}
 
-	public void setEspecialidades(List<Especialidade> especialidades) {
-		this.especialidades = especialidades;
+	public void addEspecialidades(Especialidade especialidade) {
+		this.especialidades.add(especialidade);
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(super.toString());
-		builder.append("Medico [especialidades=");
-		builder.append(especialidades.toString());
-		builder.append("]");
-		return builder.toString();
+	public String toString(Menu menu) {
+		return menu.medicoToString(this);
 	}
 }

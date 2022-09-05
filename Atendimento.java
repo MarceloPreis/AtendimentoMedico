@@ -9,9 +9,11 @@ public class Atendimento extends Operacao {
 	private Paciente paciente;
 	private Medico medico;
 	
-	public Atendimento(LocalDateTime inicio, LocalDateTime fim, int estado) {
+	public Atendimento(String inicio, String fim, int estado, Medico medico, Paciente paciente) {
 		super(inicio, fim);
 		this.estado = estado;
+		this.medico = medico;
+		this.paciente = paciente;
 	}
 	
 	
@@ -61,19 +63,8 @@ public class Atendimento extends Operacao {
 	}
 
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Atendimento [prioridade=");
-		builder.append(prioridade);
-		builder.append(", estado=");
-		builder.append(estado);
-		builder.append(", paciente=");
-		builder.append(paciente.getNome());
-		builder.append(", medico=");
-		builder.append(medico.getNome());
-		builder.append("]");
-		return builder.toString();
+	public String toString(Menu menu) {
+		return menu.atendimentoToString(this);
 	}
 	
 	
