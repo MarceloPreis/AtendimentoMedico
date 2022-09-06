@@ -116,6 +116,29 @@ public class MenuIngles implements Menu {
 		builder.append(atendimento.getPrioridade());
 		return builder.toString();
 	}
+
+	@Override
+	public String askMedico() {
+		return "Enter Medic: ";
+	}
+
+	@Override
+	public String askPaciente() {
+		// TODO Auto-generated method stub
+		return "Enter Pacient: ";
+	}
+
+	@Override
+	public String askInicio() {
+		// TODO Auto-generated method stub
+		return "Begin at (yyyy-mm-dd hh:mm): ";
+	}
+
+	@Override
+	public String askFim() {
+		// TODO Auto-generated method stub
+		return "End at (yyyy-mm-dd hh:mm): ";
+	}
 	
 	
 	

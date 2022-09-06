@@ -1,5 +1,4 @@
 package atendimentoMedico;
-import atendimentoMedico.Menu;
 
 public class MenuPortugues implements Menu {
 
@@ -38,7 +37,8 @@ public class MenuPortugues implements Menu {
 	public String success() {
 		return "Operação realizada com sucesso";
 	}
-
+	
+	
 	@Override
 	public String emitirRecibo(Atendimento atendimento) {
 		StringBuilder builder = new StringBuilder();
@@ -116,6 +116,28 @@ public class MenuPortugues implements Menu {
 		builder.append("Prioridade: ");
 		builder.append(atendimento.getPrioridade());
 		return builder.toString();
+	}
+	
+	public String askMedico() {
+		return "Informe o Medico: ";
+	}
+
+	@Override
+	public String askPaciente() {
+		// TODO Auto-generated method stub
+		return "Informe o Paciente: ";
+	}
+
+	@Override
+	public String askInicio() {
+		// TODO Auto-generated method stub
+		return "Horário de Início (yyyy-mm-dd hh:mm): ";
+	}
+
+	@Override
+	public String askFim() {
+		// TODO Auto-generated method stub
+		return "Horário de Término (yyyy-mm-dd hh:mm): ";
 	}
 
 	

@@ -11,4 +11,8 @@ public interface Menu {
 	public String medicoToString(Medico Medico);
 	public String pacienteToString(Paciente Paciente);
 	public String atendimentoToString(Atendimento Atendimento);
+	public String askMedico();
+	public String askPaciente();
+	public String askInicio();
+	public String askFim();
 }

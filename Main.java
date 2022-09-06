@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static Menu menu;
+	public static MainMenu menu;
 	public static ListaAtendimento atendimentoList = new ListaAtendimento();
 
 	public static void main(String[] args) {
@@ -55,16 +55,20 @@ public class Main {
 	}
 
 	public static void setMenu(int op) {
-		if (op == 2)
-			menu = new MenuIngles();
-		else
-			menu = new MenuPortugues();
+		if (op == 2) {
+			MenuIngles en  = new MenuIngles();
+			menu = new MainMenu(en);
+		}else {
+			MenuPortugues pt = new MenuPortugues();
+			menu = new MainMenu(pt);
+		}
+			
 	}
 
 	public static void mostrarAtendimentos() {
 		if (atendimentoList.getLista().size() > 0) System.out.println("0");
 		for (Atendimento atendimento : atendimentoList.getLista()) {
-			System.out.println(atendimento.toString(menu));
+			System.out.println(menu.atendimentoToString(atendimento));
 		}
 	}
 
@@ -84,7 +88,7 @@ public class Main {
 			Especialidade especialidade = new Especialidade(esp);
 			medico.addEspecialidades(especialidade);
 		}
-		System.out.println(medico.toString(menu));
+		System.out.println(menu.medicoToString(medico));
 
 		return medico;
 	}
@@ -98,7 +102,7 @@ public class Main {
 
 		Paciente paciente = new Paciente(dataNascimento, nome);
 		System.out.println(menu.success());
-		System.out.println(paciente.toString(menu));
+		System.out.println(menu.pacienteToString(paciente));
 
 		return paciente;
 	}
@@ -106,16 +110,16 @@ public class Main {
 	public static void cadastrarAtedimento() {
 		Scanner in = new Scanner(System.in);
 
-		System.out.println("Informe o Médico");
+		System.out.println(menu.askMedico());
 		Medico medico = cadastrarMedico();
 
-		System.out.println("Informe o Paciente");
+		System.out.println(menu.askPaciente());
 		Paciente paciente = cadastrarPaciente();
 
-		System.out.println("Informe o horário de início (yyyy-mm-dd hh:mm)");
+		System.out.println(menu.askInicio());
 		String inicio = in.next();
 
-		System.out.println("Informe o horário de fim (yyyy-mm-dd hh:mm)");
+		System.out.println(menu.askFim());
 		String fim = in.next();
 
 		Atendimento atendimento = new Atendimento(inicio, fim, 1, medico, paciente);
@@ -134,7 +138,7 @@ public class Main {
 
 		atendimentoList.addLista(atendimento);
 		System.out.println(menu.success());
-		System.out.println(atendimento.toString(menu));
+		System.out.println(menu.atendimentoToString(atendimento));
 
 	}
 
